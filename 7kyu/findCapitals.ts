@@ -4,16 +4,25 @@
 // Example (Input --> Output)
 // "CodEWaRs" --> [0,3,4,6]
 
+// const capitals = (word: string): number[] => {
+//   const result: number[] = []
+
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i].toUpperCase() === word[i]) {
+//       result.push(i)
+//     }
+//   }
+
+//   return result
+// }
+
+//rewrite to reduce
+
 const capitals = (word: string): number[] => {
-  const result: number[] = []
-
-  for (let i = 0; i < word.length; i++) {
-    if (word[i].toUpperCase() === word[i]) {
-      result.push(i)
+  return word.split('').reduce((acc: number[], char: string, index: number) => {
+    if (char === char.toUpperCase()) {
+      acc.push(index)
     }
-  }
-
-  return result
+    return acc
+  }, [])
 }
-
-console.log(capitals('aAbB'))
