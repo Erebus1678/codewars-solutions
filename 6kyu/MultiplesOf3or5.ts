@@ -7,18 +7,16 @@
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
 // Courtesy of projecteuler.net (Problem 1)
+
 export class Challenge {
   static solution(number: number) {
-    let sum = 0
-    if (number < 0) return sum
-
-    for (let i = 1; i < number; i++) {
-      if (i % 3 === 0 || i % 5 === 0) {
-        sum += i
-      }
-    }
-
-    return sum
+    return number < 0
+      ? 0
+      : Array.from({ length: number }, (_, i) => i).reduce(
+          (sum, current) =>
+            current % 3 === 0 || current % 5 === 0 ? sum + current : sum,
+          0,
+        )
   }
 }
 
